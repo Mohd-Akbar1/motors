@@ -10,7 +10,13 @@ import { dbConnect } from "./model/dbcconnection.js";
 
 
 dotenv.config();
-app.use(cors());
+app.use(cors(
+    {
+        origin:"http://localhost:3000",
+        methods:["GET","POST"]
+
+    }
+));
 
 
 const PORT = process.env.PORT || process.env.PORT1;

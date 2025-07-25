@@ -22,7 +22,7 @@ export  class AuthController{
             to:`+91${phoneNumber}`,
             channel:"sms"
         })
-        res.json({sucess:true,message:"Otp sent successfully"})
+        res.status(201).json({success:true,message:"Otp sent successfully"})
     
             
         } catch (error) {
@@ -39,10 +39,7 @@ export  class AuthController{
         console.log(phoneNumber, otp);
 
         const result = await client.verify.v2.services(process.env.TWILLIO_ServiceID)
-            .verificationChecks
-
-
-        .create({
+            .verificationChecks.create({
                 to: `+91${phoneNumber}`,
                 code: otp
             });
